@@ -1,0 +1,368 @@
+{
+    "paths": {
+        "/addPermissionCategory": {
+            "post": {
+                "tags": [
+                    "Role Management"
+                ],
+                "description": "Add permission category",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Add category",
+                        "schema": {
+                            "$ref": "#/definitions/AddPermissionCategory"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Category added successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/AddPermissionCategory"
+                        }
+                    }
+                }
+            }
+        },
+        "/getCategory": {
+            "get": {
+                "tags": [
+                    "Role Management"
+                ],
+                "description": "Get category",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Role's category."
+                    }
+                }
+            }
+        },
+        "/addPermissions": {
+            "post": {
+                "tags": [
+                    "Role Management"
+                ],
+                "description": "Add permission",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Add permission",
+                        "schema": {
+                            "$ref": "#/definitions/AddPermissions"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Permission added successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/AddPermissions"
+                        }
+                    }
+                }
+            }
+        },
+        "/getAllPermission": {
+            "get": {
+                "tags": [
+                    "Role Management"
+                ],
+                "description": "Get all permission",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All permissions."
+                    }
+                }
+            }
+        },
+        "/addRole": {
+            "post": {
+                "tags": [
+                    "Role Management"
+                ],
+                "description": "Add role",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Add role",
+                        "schema": {
+                            "$ref": "#/definitions/AddRole"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Role added successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/AddRole"
+                        }
+                    }
+                }
+            }
+        },
+        "/listRole": {
+            "post": {
+                "tags": [
+                    "Role Management"
+                ],
+                "description": "Get role list",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Add page and pagesize",
+                        "schema": {
+                            "$ref": "#/definitions/ListRoles"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Role list."
+                    }
+                }
+            }
+        },
+        "/getRolePermission/{roleId}": {
+            "get": {
+                "tags": [
+                    "Role Management"
+                ],
+                "description": "Get role detail",
+                "parameters": [
+                    {
+                        "name": "roleId",
+                        "in": "path",
+                        "description": "Id of role",
+                        "schema": {
+                            "$ref": "#/definitions/AddCMS"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Role detail."
+                    }
+                }
+            }
+        },
+        "/changeRoleStatus": {
+            "post": {
+                "tags": [
+                    "Role Management"
+                ],
+                "description": "Change role status",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Change status of roles",
+                        "schema": {
+                            "$ref": "#/definitions/ChangeRoleStatus"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Role's status changed successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/ChangeRoleStatus"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "AddPermissionCategory": {
+            "required": [
+                "category"
+            ],
+            "properties": {
+                "category": {
+                    "example": "Admin Users",
+                    "type": "string"
+                }
+            }
+        },
+        "AddPermissions": {
+            "required": [
+                "categoryId",
+                "permission"
+            ],
+            "properties": {
+                "categoryId": {
+                    "example": "5d565478a8fe610d46c68a3f",
+                    "type": "string"
+                },
+                "permission": {
+                    "example": "View List",
+                    "type": "string"
+                }
+            }
+        },
+        "AddRole": {
+            "required": [
+                "role",
+                "permissions"
+            ],
+            "properties": {
+                "role": {
+                    "example": "Email Manager",
+                    "type": "string"
+                },
+                "permissions": {
+                    "example": [
+                        "5d567a083096c311dc141044",
+                        "5d567a383096c311dc141045"
+                    ],
+                    "type": "array"
+                }
+            }
+        },
+        "ListRoles": {
+            "required": [
+                "page",
+                "pagesize"
+            ],
+            "properties": {
+                "page": {
+                    "example": 1,
+                    "type": "number"
+                },
+                "pagesize": {
+                    "example": 10,
+                    "type": "number"
+                },
+                "columnKey": {
+                    "example": "roleListing",
+                    "type": "string"
+                },
+                "searchText": {
+                    "example": "",
+                    "type": "string"
+                },
+                "filter": {
+                    "type": "array",
+                    "example": [
+                        {
+                            "key": "role",
+                            "type": "contains",
+                            "value": "admin"
+                        }
+                    ]
+                },
+                "condition": {
+                    "example": "$or",
+                    "type": "string"
+                }
+            }
+        },
+        "ChangeRoleStatus": {
+            "required": [
+                "ids",
+                "status"
+            ],
+            "properties": {
+                "ids": {
+                    "example": [
+                        "5ce25306e6405f7072059128",
+                        "5ce25320e6405f707205912f"
+                    ],
+                    "type": "array"
+                },
+                "status": {
+                    "example": true,
+                    "type": "boolean"
+                }
+            }
+        }
+    }
+}

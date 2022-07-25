@@ -1,0 +1,43 @@
+{
+    "user": {
+        "password": 0,
+        "__v": 0,
+        "previouslyUsedPasswords": 0,
+        "verificationToken": 0,
+        "forgotToken": 0,
+        "deviceToken": 0,
+        "passwordUpdatedAt": 0,
+        "isDeleted": 0,
+        "failedAttempts": 0,
+        "forgotTokenCreationTime": 0,
+        "verificationTokenCreationTime": 0,
+        "updatedAt": 0
+    },
+    "csv": {
+        "_id": 0,
+        "__v": 0,
+        "photo": 0,
+        "updatedAt": 0,
+        "createdAt": 0,
+        "role": 0,
+        "password": 0,
+        "isDeleted": 0,
+        "emailVerificationStatus": 0,
+        "status": 0,
+        "verificationToken": 0,
+        "previouslyUsedPasswords": 0,
+        "forgotToken": 0,
+        "deviceToken": 0,
+        "passwordUpdatedAt": 0,
+        "failedAttempts": 0,
+        "forgotTokenCreationTime": 0,
+        "verificationTokenCreationTime": 0
+    },
+    "roleList": {
+        "__v": 0,
+        "createdAt": 0,
+        "updatedAt": 0,
+        "permissions": 0,
+        "isDeleted": 0
+    }
+}

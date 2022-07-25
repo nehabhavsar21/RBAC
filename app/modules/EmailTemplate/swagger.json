@@ -1,0 +1,392 @@
+{
+    "paths": {
+        "/addUpdateEmail": {
+            "post": {
+                "tags": [
+                    "Email Template Management"
+                ],
+                "description": "Add update email template",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "body",
+                        "description": "Add update template",
+                        "schema": {
+                            "$ref": "#/definitions/AddEmailTemplate"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Template added successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/AddEmailTemplate"
+                        }
+                    }
+                }
+            }
+        },
+        "/searchEmail": {
+            "post": {
+                "tags": [
+                    "Email Template Management"
+                ],
+                "description": "Search email template",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "body",
+                        "description": "Search template",
+                        "schema": {
+                            "$ref": "#/definitions/SearchEmail"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Searched template.",
+                        "schema": {
+                            "$ref": "#/definitions/SearchEmail"
+                        }
+                    }
+                }
+            }
+        },
+        "/deleteTemplate": {
+            "post": {
+                "tags": [
+                    "Email Template Management"
+                ],
+                "description": "Delete email template",
+                "parameters": [
+                    {
+                        "name": "ids",
+                        "in": "body",
+                        "description": "Delete templates",
+                        "schema": {
+                            "$ref": "#/definitions/DeleteEmailTemplate"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Template deleted successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/DeleteEmailTemplate"
+                        }
+                    }
+                }
+            }
+        },
+        "/changeTemplateStatus": {
+            "post": {
+                "tags": [
+                    "Email Template Management"
+                ],
+                "description": "Change email template status",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Change status of templates",
+                        "schema": {
+                            "$ref": "#/definitions/ChangeEmailTemplateStatus"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Template status changed successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/ChangeEmailTemplateStatus"
+                        }
+                    }
+                }
+            }
+        },
+        "/detailEmail/{id}": {
+            "get": {
+                "tags": [
+                    "Email Template Management"
+                ],
+                "description": "Get email template",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of email template",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Template data.",
+                        "schema": {
+                            "$ref": "#/definitions/AddEmailTemplate"
+                        }
+                    }
+                }
+            }
+        },
+        "/listEmail": {
+            "post": {
+                "tags": [
+                    "Email Template Management"
+                ],
+                "description": "List email template",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "List templates",
+                        "schema": {
+                            "$ref": "#/definitions/ListEmail"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Email List.",
+                        "schema": {
+                            "$ref": "#/definitions/ListEmail"
+                        }
+                    }
+                }
+            }
+        },
+        "/getEmailColumnValues": {
+            "post": {
+                "tags": [
+                    "Email Template Management"
+                ],
+                "description": "Column values",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Params",
+                        "schema": {
+                            "$ref": "#/definitions/GetEmailColumn"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Column values.",
+                        "schema": {
+                            "$ref": "#/definitions/GetEmailColumn"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "AddEmailTemplate": {
+            "required": [
+                "emailKey",
+                "subject",
+                "emailContent",
+                "gjsHtml",
+                "gjsCss",
+                "gjsAssets",
+                "gjsStyles",
+                "gjsComponents"
+            ],
+            "properties": {
+                "emailKey": {
+                    "example": "signup_mail",
+                    "type": "string"
+                },
+                "subject": {
+                    "example": "Welcome Message",
+                    "type": "string"
+                },
+                "emailContent": {
+                    "example": "<style>* { box-sizing: border-box; } body {margin: 0;}</style><p><span style=\"color: rgb(0,0,0);font-size: 13px;font-family: Arial;\">Congratulations {{{fullName}}} for signing up with App. Your experience with us is the highest priority. We welcome you to get to know our company and its features. </span><br><br><a href=\"{{{verificationLink}}}\" target=\"_self\"><span style=\"color: rgb(0,0,0);font-size: 13px;font-family: Arial;\">Click link to verify your account</span></a><br><br></p>",
+                    "type": "string"
+                },
+                "gjsHtml": {
+                    "example": "<p><span style=\"color: rgb(0,0,0);font-size: 13px;font-family: Arial;\">Congratulations {{{fullName}}} for signing up with App. Your experience with us is the highest priority. We welcome you to get to know our company and its features. </span><br><br><a href=\"{{{verificationLink}}}\" target=\"_self\"><span style=\"color: rgb(0,0,0);font-size: 13px;font-family: Arial;\">Click link to verify your account</span></a><br><br></p>",
+                    "type": "string"
+                },
+                "gjsCss": {
+                    "example": "<style>* { box-sizing: border-box; } body {margin: 0;}</style>",
+                    "type": "string"
+                },
+                "gjsAssets": {
+                    "example": "<style>* { box-sizing: border-box; } body {margin: 0;}</style>",
+                    "type": "string"
+                },
+                "gjsStyles": {
+                    "example": "<style>* { box-sizing: border-box; } body {margin: 0;}</style>",
+                    "type": "string"
+                },
+                "gjsComponents": {
+                    "example": "<style>* { box-sizing: border-box; } body {margin: 0;}</style>",
+                    "type": "string"
+                }
+            }
+        },
+        "DeleteEmailTemplate": {
+            "required": [
+                "ids"
+            ],
+            "properties": {
+                "ids": {
+                    "example": [
+                        "5ce25306e6405f7072059128",
+                        "5ce25320e6405f707205912f"
+                    ],
+                    "type": "array"
+                }
+            }
+        },
+        "ChangeEmailTemplateStatus": {
+            "required": [
+                "ids",
+                "status"
+            ],
+            "properties": {
+                "ids": {
+                    "example": [
+                        "5ce25306e6405f7072059128",
+                        "5ce25320e6405f707205912f"
+                    ],
+                    "type": "array"
+                },
+                "status": {
+                    "example": true,
+                    "type": "boolean"
+                }
+            }
+        },
+        "ListEmail": {
+            "required": [
+                "page",
+                "pagesize"
+            ],
+            "properties": {
+                "page": {
+                    "example": 1,
+                    "type": "number"
+                },
+                "pagesize": {
+                    "example": 10,
+                    "type": "number"
+                },
+                "columnKey": {
+                    "example": "emailListing",
+                    "type": "string"
+                },
+                "searchText": {
+                    "example": "",
+                    "type": "string"
+                },
+                "filter": {
+                    "type": "array",
+                    "example": [
+                        {
+                            "key": "subject",
+                            "type": "contains",
+                            "value": "welcome"
+                        }
+                    ]
+                },
+                "condition": {
+                    "example": "$or",
+                    "type": "string"
+                }
+            }
+        },
+        "SearchEmail": {
+            "required": [
+                "filter"
+            ],
+            "properties": {
+                "filter": {
+                    "example": {
+                        "subject": "wel"
+                    },
+                    "type": "object"
+                }
+            }
+        },
+        "GetEmailColumn": {
+            "required": [
+                "filter"
+            ],
+            "properties": {
+                "filter": {
+                    "example": {
+                        "emailKey": "s"
+                    },
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

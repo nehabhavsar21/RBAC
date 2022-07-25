@@ -1,0 +1,691 @@
+{
+  "paths": {
+    "/user/userListing": {
+      "post": {
+        "tags": ["User Management"],
+        "description": "User list",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Params",
+            "schema": {
+              "$ref": "#/definitions/UsersList"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Users list.",
+            "schema": {
+              "$ref": "#/definitions/UsersList"
+            }
+          }
+        }
+      }
+    },
+    "/user/userProfile/{userId}": {
+      "get": {
+        "tags": ["User Management"],
+        "description": "Get user",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "Id of user"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "User data."
+          }
+        }
+      }
+    },
+    "/downloadUserFile": {
+      "post": {
+        "tags": ["User Management"],
+        "description": "Here type may be csv, excel and pdf.",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "Download User file.",
+            "schema": {
+              "$ref": "#/definitions/downloadUserFile"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "User Details Are Downloaded Successfully.",
+            "schema": {
+              "$ref": "#/definitions/downloadUserFile"
+            }
+          }
+        }
+      }
+    },
+    "/user/deleteUsers": {
+      "post": {
+        "tags": ["User Management"],
+        "description": "Delete users",
+        "parameters": [
+          {
+            "name": "ids",
+            "in": "body",
+            "description": "Ids of users",
+            "schema": {
+              "$ref": "#/definitions/DeleteUser"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Users deleted successfully.",
+            "schema": {
+              "$ref": "#/definitions/DeleteUser"
+            }
+          }
+        }
+      }
+    },
+    "/user/changeStatus": {
+      "post": {
+        "tags": ["User Management"],
+        "description": "Change user status",
+        "parameters": [
+          {
+            "name": "userIds",
+            "in": "body",
+            "description": "Ids of users",
+            "schema": {
+              "$ref": "#/definitions/ChangeUserStatus"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Status changed successfully.",
+            "schema": {
+              "$ref": "#/definitions/ChangeStatus"
+            }
+          }
+        }
+      }
+    },
+    "/user/addUserByAdmin": {
+      "post": {
+        "tags": ["User Management"],
+        "description": "User is added by admin",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Params",
+            "schema": {
+              "$ref": "#/definitions/addUserByAdmin"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "User is added successfullu",
+            "schema": {
+              "$ref": "#/definitions/addUserByAdmin"
+            }
+          }
+        }
+      }
+    },
+    "/user/approveUser/{userId}": {
+      "get": {
+        "tags": ["User Management"],
+        "description": "Approve user",
+        "parameters": [
+          {
+            "name": "userId",
+            "required": true,
+            "in": "path",
+            "description": "User id",
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "required": true,
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Approve user."
+          }
+        }
+      }
+    },
+    "/user/resendVerificationMail/{userId}": {
+      "get": {
+        "tags": ["User Management"],
+        "description": "Resend Verification Mail",
+        "parameters": [
+          {
+            "name": "userId",
+            "required": true,
+            "in": "path",
+            "description": "User id",
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "required": true,
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Resend Verification Mail."
+          }
+        }
+      }
+    },
+    "/user/addUser": {
+      "post": {
+        "tags": ["User Management"],
+        "description": "Add vendor",
+        "parameters": [
+          {
+            "name": "emailId",
+            "in": "formData",
+            "description": "Please enter emailId"
+          },
+          {
+            "name": "businessName",
+            "in": "formData",
+            "description": "please enter business name"
+          },
+          {
+            "name": "contactName",
+            "in": "formData",
+            "description": "please enter contact name"
+          },
+          {
+            "name": "restaurantLogo",
+            "in": "formData",
+            "type": "file",
+            "description": "Restaurant logo"
+          },
+          {
+            "name": "foodManagerCertififcate",
+            "in": "formData",
+            "type": "file",
+            "description": "Food manager certificate"
+          },
+          {
+            "name": "foodPremiseInspectionReport",
+            "in": "formData",
+            "type": "file",
+            "description": "Food premise inspection report"
+          },
+          {
+            "name": "foodCertificate",
+            "in": "formData",
+            "type": "file",
+            "description": "Food certificate"
+          },
+          {
+            "name": "smartServeCertification",
+            "in": "formData",
+            "type": "file",
+            "description": "Smart serve Certification"
+          },
+          {
+            "name": "liquourLicense",
+            "in": "formData",
+            "type": "file",
+            "description": "Liquour license"
+          },
+          {
+            "name": "bankProof",
+            "in": "formData",
+            "type": "file",
+            "description": "Bank Proof"
+          },
+          {
+            "name": "accountHolderType",
+            "in": "formData",
+            "description": "please enter account Holder Type"
+          },
+          {
+            "name": "bankName",
+            "in": "formData",
+            "description": "please enter bank name"
+          },
+          {
+            "name": "accountHolderName",
+            "in": "formData",
+            "description": "please enter account Holder Name"
+          },
+          {
+            "name": "routingNumber",
+            "in": "formData",
+            "description": "please enter routing Number"
+          },
+          {
+            "name": "accountNumber",
+            "in": "formData",
+            "description": "please enter account Number"
+          },
+          {
+            "name": "photo",
+            "in": "formData",
+            "type": "file",
+            "description": "selected photo"
+          },
+          {
+            "name": "bio",
+            "type": "string",
+            "description": "add something about you"
+          },
+          {
+            "name": "availability",
+            "in": "formData",
+            "schema": {
+              "$ref": "#/definitions/foodProvidersUpdateAvailabilityDetailsRequest"
+            }
+          },
+          {
+            "name": "deliveryTime",
+            "in": "formData",
+            "description": "please enter delivery Time"
+          },
+          {
+            "name": "isProfileCompleted",
+            "in": "formData",
+            "type": "Boolean"
+          },
+          {
+            "name": "isProvideTakeAway",
+            "in": "formData",
+            "type": "Boolean"
+          },
+          {
+            "name": "isPizzaResturant",
+            "in": "formData",
+            "type": "Boolean"
+          },
+          {
+            "name": "address",
+            "in": "formData",
+            "description": "Address"
+          },
+          {
+            "name": "latitude",
+            "in": "formData",
+            "description": "Latitude"
+          },
+          {
+            "name": "longitude",
+            "in": "formData",
+            "description": "Longitude"
+          },
+          {
+            "name": "Authorization",
+            "required": true,
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "User added successfully.",
+            "schema": {
+              "$ref": "#/definitions/UpdateUserProfileResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "UsersList": {
+      "required": ["page", "pagesize"],
+      "properties": {
+        "page": {
+          "example": 1,
+          "type": "number"
+        },
+        "pagesize": {
+          "example": 10,
+          "type": "number"
+        },
+        "columnKey": {
+          "example": "userListing",
+          "type": "string"
+        },
+        "searchText": {
+          "example": "neha",
+          "type": "string"
+        },
+        "filter": {
+          "type": "array",
+          "example": [
+            {
+              "key": "role",
+              "value": "vendor/driver/user/vendorUser"
+            },
+            {
+              "key": "firstName",
+              "type": "contains",
+              "value": "lakshmi"
+            },
+            {
+              "key": "emailId",
+              "type": "contains",
+              "value": "bhavsarneha21@gmail.com"
+            },
+            {
+              "key": "createdAt",
+              "type": "date",
+              "value": {
+                "startDate": "7/2/2020",
+                "endDate": "8/2/2020",
+                "presentDate": "7/2/2020",
+                "calendarSpecificCount": 1,
+                "calendarSpecificType": "days"
+              }
+            }
+          ]
+        },
+        "condition": {
+          "example": "$or",
+          "type": "string"
+        }
+      }
+    },
+    "DeleteUser": {
+      "required": ["userIds", "status"],
+      "properties": {
+        "userIds": {
+          "example": ["5ce25306e6405f7072059128", "5ce25320e6405f707205912f"],
+          "type": "array"
+        }
+      }
+    },
+    "ChangeUserStatus": {
+      "required": ["userIds"],
+      "properties": {
+        "userIds": {
+          "example": ["5ce25306e6405f7072059128", "5ce25320e6405f707205912f"],
+          "type": "array"
+        },
+        "status": {
+          "example": true,
+          "type": "boolean"
+        }
+      }
+    },
+    "addUserByAdmin": {
+      "required": [
+        "userName",
+        "firstName",
+        "lastName",
+        "status",
+        "company",
+        "emailId"
+      ],
+      "properties": {
+        "userId": {
+          "example": "5ce25306e6405f7072059128",
+          "type": "objectId"
+        },
+        "firstName": {
+          "example": "lakshmi",
+          "type": "string"
+        },
+        "lastName": {
+          "example": "matta",
+          "type": "string"
+        },
+        "userName": {
+          "example": "satya sree",
+          "type": "string"
+        },
+        "company": {
+          "example": "Zeros",
+          "type": "string"
+        },
+        "emailId": {
+          "example": "bhavsarneha21@gmail.com",
+          "type": "string"
+        },
+        "status": {
+          "example": true,
+          "type": "boolean"
+        },
+        "country": {
+          "example": "5ce25306e6405f7072059128",
+          "type": "objectId"
+        },
+        "dob": {
+          "example": "09/29/1996",
+          "type": "string"
+        },
+        "mobile": {
+          "example": "7207334583",
+          "type": "string"
+        },
+        "address": {
+          "example": "Bodakdev",
+          "type": "string"
+        },
+        "gender": {
+          "example": "female",
+          "type": "string"
+        },
+        "fbLink": {
+          "example": "www.fb.com",
+          "type": "string"
+        },
+        "twitterLink": {
+          "example": "www.fb.com",
+          "type": "string"
+        },
+        "codePen": {
+          "example": "www.codepen.com",
+          "type": "string"
+        },
+        "slack": {
+          "example": "www.slack.com",
+          "type": "string"
+        },
+        "gitHubLink": {
+          "example": "www.gitHublink.com",
+          "type": "string"
+        },
+        "instagramLink": {
+          "example": "www.instagram.com",
+          "type": "string"
+        },
+        "website": {
+          "example": "www.website.com",
+          "type": "string"
+        }
+      }
+    },
+    "downloadUserFile": {
+      "required": ["filteredFields", "type"],
+      "properties": {
+        "filteredFields": {
+          "type": "array",
+          "example": [
+            "userId",
+            "firstName",
+            "lastName",
+            "emailId",
+            "mobileNo",
+            "emailVerify",
+            "status",
+            "photo"
+          ]
+        },
+        "type": {
+          "type": "string",
+          "example": "csv"
+        }
+      }
+    },
+    "SaveColumnSettings": {
+      "required": ["columns", "key"],
+      "properties": {
+        "key": {
+          "example": "userListing",
+          "type": "string"
+        },
+        "columns": {
+          "example": [
+            {
+              "key": "firstName",
+              "status": false
+            },
+            {
+              "key": "lastName",
+              "status": false
+            },
+            {
+              "key": "emailId",
+              "status": true
+            }
+          ],
+          "type": "array"
+        },
+        "latestColumns": {
+          "example": [],
+          "type": "array"
+        }
+      }
+    },
+    "saveTemplateSettings": {
+      "required": ["columns", "key", "description", "color"],
+      "properties": {
+        "key": {
+          "example": "userListing",
+          "type": "string"
+        },
+        "description": {
+          "example": "Testing",
+          "type": "string"
+        },
+        "color": {
+          "example": "#eee",
+          "type": "string"
+        },
+        "columns": {
+          "example": [
+            {
+              "key": "firstName",
+              "status": false
+            },
+            {
+              "key": "lastName",
+              "status": false
+            },
+            {
+              "key": "emailId",
+              "status": true
+            }
+          ],
+          "type": "array"
+        },
+        "templateId": {
+          "example": "5f0e885eea61d11190563002",
+          "type": "objectId"
+        }
+      }
+    },
+    "saveFilter": {
+      "required": ["filter", "condition", "key", "description", "color"],
+      "properties": {
+        "key": {
+          "example": "userListing",
+          "type": "string"
+        },
+        "description": {
+          "example": "Testing",
+          "type": "string"
+        },
+        "color": {
+          "example": "#eee",
+          "type": "string"
+        },
+        "condition": {
+          "example": "$or",
+          "type": "string"
+        },
+        "filter": {
+          "example": [
+            {
+              "key": "emailId",
+              "type": "contains",
+              "value": "bhavsarneha21@gmail.com"
+            }
+          ],
+          "type": "array"
+        },
+        "filterId": {
+          "example": "5f0e885eea61d11190563002",
+          "type": "objectId"
+        }
+      }
+    }
+  }
+}

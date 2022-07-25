@@ -1,0 +1,18 @@
+{
+	"LOGIN_SUCCESS": "Logged in successfully.",
+	"INVALID_PASSWORD": "Authentication failed, invalid credentials.",
+	"CORRECT_CURRENT_PASSWORD": "Please enter correct old password.",
+	"LOGOUT_SUCCESS": "Logged out successfully.",
+	"BLOCKED_BY_ADMIN": "User is blocked by Admin.",
+	"NO_RIGHTS": "User have no rights access.",
+	"VALID_EMAIL": "VALID_EMAIL",
+	"%s REQUIRED": "%s REQUIRED",
+	"COMMONLY_USED_PASSWORD": "COMMONLY_USED_PASSWORD",
+	"PASSWORD_VALIDATION": "PASSWORD_VALIDATION",
+	"%s ARRAY": "%s ARRAY",
+	"%s ARRAY_LENGTH": "%s ARRAY_LENGTH",
+	"%s VALID": "%s VALID",
+	"PASSWORD_VALIDATION_LENGTH": "PASSWORD_VALIDATION_LENGTH",
+	"VERIFY_MOBILE": "VERIFY_MOBILE",
+	"ROLE_NOT_FOUND": "Role not found"
+}

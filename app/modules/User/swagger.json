@@ -1,0 +1,738 @@
+{
+  "paths": {
+    "/users/register": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Create new user in system",
+        "parameters": [
+          {
+            "name": "fullName",
+            "in": "formData",
+            "description": "please enter full name"
+          },
+          {
+            "name": "emailId",
+            "in": "formData",
+            "description": "please enter email id"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": "please enter password"
+          },
+          {
+            "name": "roleId",
+            "in": "formData",
+            "description": "please enter roleId"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "User details update successfully.",
+            "schema": {
+              "$ref": "#/definitions/CustomerRegisterResponse"
+            }
+          }
+        }
+      }
+    },
+    "/users/login": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Login",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Login",
+            "schema": {
+              "$ref": "#/definitions/Login"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Login.",
+            "schema": {
+              "$ref": "#/definitions/LoginResponse"
+            }
+          }
+        }
+      }
+    },
+    "/users/forgotPassword": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Send forgot password mail",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "Send forgot password mail",
+            "schema": {
+              "$ref": "#/definitions/ForgotPassword"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Mail sent successfully",
+            "schema": {
+              "$ref": "#/definitions/ForgotPassword"
+            }
+          }
+        }
+      }
+    },
+    "/users/resetPassword": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Reset password",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "Reset password",
+            "schema": {
+              "$ref": "#/definitions/ResetPassword"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Password updated successfully",
+            "schema": {
+              "$ref": "#/definitions/ResetPassword"
+            }
+          }
+        }
+      }
+    },
+    "/users/fileUpload": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Upload file",
+        "parameters": [
+          {
+            "name": "file",
+            "required": true,
+            "in": "formData",
+            "type": "file",
+            "description": "Upload file"
+          },
+          {
+            "name": "Authorization",
+            "required": true,
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "multipart/formData-data"
+        ],
+        "responses": {
+          "200": {
+            "description": "File uploaded",
+            "schema": {
+              "$ref": "#/definitions/Uploadfile"
+            }
+          }
+        }
+      }
+    },
+    "/users/changePassword": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Change password",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Change password",
+            "schema": {
+              "$ref": "#/definitions/ChangePassword"
+            }
+          },
+          {
+            "name": "Authorization",
+            "required": true,
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Password change successfully.",
+            "schema": {
+              "$ref": "#/definitions/ChangePassword"
+            }
+          }
+        }
+      }
+    },
+    "/users/updateUserProfile": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Update User Profile",
+        "parameters": [
+          {
+            "name": "fullName",
+            "in": "formData",
+            "description": "please enter full name"
+          },
+          {
+            "name": "address",
+            "in": "formData",
+            "description": "please enter address"
+          },
+          {
+            "name": "bio",
+            "in": "formData",
+            "description": "please add more about you"
+          },
+          {
+            "name": "latitude",
+            "in": "formData",
+            "description": "please enter latitude"
+          },
+          {
+            "name": "longitude",
+            "in": "formData",
+            "description": "please enter longitude"
+          },
+          {
+            "name": "photo",
+            "in": "formData",
+            "type": "file",
+            "description": "selected photo"
+          },
+          {
+            "name": "mobile",
+            "in": "formData",
+            "description": "Mobile number"
+          },
+          {
+            "name": "countryCode",
+            "in": "formData",
+            "description": "country Code"
+          },
+          {
+            "name": "Authorization",
+            "required": true,
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "User details update successfully.",
+            "schema": {
+              "$ref": "#/definitions/UpdateUserProfileResponse"
+            }
+          }
+        }
+      }
+    },
+    "/users/profile": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Get User Profile",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "required": true,
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Get User Profile.",
+            "schema": {
+              "$ref": "#/definitions/UpdateUserProfileResponse"
+            }
+          }
+        }
+      }
+    },
+    "/users/logout": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Logout user",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "required": true,
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Logout user."
+          }
+        }
+      }
+    },
+    "/users/verifyUser": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Verify user email",
+        "parameters": [
+          {
+            "name": "token",
+            "required": true,
+            "in": "query",
+            "description": "Verification token",
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "required": true,
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Verify user email."
+          }
+        }
+      }
+    },
+    "/users/refreshAccessToken": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Refresh access token",
+        "parameters": [
+          {
+            "name": "refreshToken",
+            "required": true,
+            "in": "header",
+            "description": "Authorization token",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Refresh access token."
+          }
+        }
+      }
+    },
+    "/users/socialAccess": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Create new user using social login",
+        "parameters": [
+          {
+            "name": "user",
+            "required": true,
+            "in": "body",
+            "description": "User that we want to create",
+            "schema": {
+              "$ref": "#/definitions/socialAccess"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New user is created",
+            "schema": {
+              "$ref": "#/definitions/socialAccess"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Register": {
+      "required": [
+        "emailId"
+      ],
+      "properties": {
+        "emailId": {
+          "type": "string",
+          "example": "bhavsarneha21@gmail.com",
+          "uniqueItems": true
+        },
+        "password": {
+          "type": "string",
+          "example": "Test1234",
+          "uniqueItems": true
+        },
+        "countryCode": {
+          "type": "string",
+          "example": "+91"
+        },
+        "bio": {
+          "type": "string",
+          "example": "add something about you"
+        },
+        "isPizzaResturant": {
+          "type": "Boolean",
+          "example": "true/false"
+        },
+        "mobile": {
+          "type": "string",
+          "example": "999-999-9999",
+          "uniqueItems": true
+        },
+        "fullName": {
+          "example": "Neha Bhavsar",
+          "type": "string"
+        },
+        "deviceToken": {
+          "type": "string",
+          "example": "epAQ4lgVJsg:APA91bFg6v8rN_hGdHV2_iqB4denPSuyJMnswpyFrPzmETH6ig2qPizowAQ17I81y6dHzZr3k1LtO5YjSkldi4-LxLxl8BW0vMM6Ww7UUWZod5nWrdNR6seS3t9ztN_KSMNIrYegblKe"
+        },
+        "device": {
+          "type": "string",
+          "example": "android"
+        },
+        "latitude": {
+          "type": "number",
+          "example": "20.6777"
+        },
+        "longitude": {
+          "type": "number",
+          "example": "25.999999"
+        }
+      }
+    },
+    "CustomerRegisterResponse": {
+      "properties": {
+        "data": {
+          "type": "object",
+          "example": {}
+        },
+        "extra_meta": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "type": "string",
+              "example": "Registered successfully. Please verify your email."
+            }
+          }
+        }
+      }
+    },
+    "Login": {
+      "required": [
+        "emailId",
+        "password"
+      ],
+      "properties": {
+        "emailOrMobile": {
+          "type": "string",
+          "example": "bhavsarneha21@gmail.com",
+          "uniqueItems": true
+        },
+        "password": {
+          "type": "string",
+          "example": "Test1234",
+          "uniqueItems": true
+        },
+        "deviceToken": {
+          "type": "string",
+          "example": "epAQ4lgVJsg:APA91bFg6v8rN_hGdHV2_iqB4denPSuyJMnswpyFrPzmETH6ig2qPizowAQ17I81y6dHzZr3k1LtO5YjSkldi4-LxLxl8BW0vMM6Ww7UUWZod5nWrdNR6seS3t9ztN_KSMNIrYegblKe"
+        },
+        "device": {
+          "type": "string",
+          "example": "android"
+        }
+      }
+    },
+    "LoginResponse": {
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "Number",
+              "example": 1
+            },
+            "emailId": {
+              "type": "string",
+              "example": "test1@grr.la"
+            },
+            "fullName": {
+              "type": "string",
+              "example": "test1"
+            },
+            "countryCode": {
+              "type": "string",
+              "example": "1245"
+            },
+            "mobile": {
+              "type": "string",
+              "example": "987-456-6299"
+            },
+            "address": {
+              "type": "string",
+              "example": "ahmedabad"
+            },
+            "photo": {
+              "type": "string",
+              "example": "public/upload/images/1613542107055.jpg"
+            },
+            "role": {
+              "type": "string",
+              "example": "user"
+            }
+          }
+        },
+        "extra_meta": {
+          "type": "object",
+          "properties": {
+            "token": {
+              "type": "string",
+              "example": "ySbm6GC3XKNjgS8-GFd4EJ1VJtpftxQDKzyydDdlOcoz2jixeNx_GDSFttFOdRbi42CfCxvdGYZscPgE1mtooHvu3CVkaKWKbsCfjxWpO8oWw3bb8zN-69Vpyhdv2mHOyt4gc"
+            }
+          }
+        }
+      }
+    },
+    "ResetPassword": {
+      "required": [
+        "password",
+        "token"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "email@example.com",
+          "uniqueItems": true
+        },
+        "password": {
+          "type": "string",
+          "example": "Test123",
+          "uniqueItems": true
+        },
+        "token": {
+          "type": "string",
+          "example": "wh6TyY",
+          "uniqueItems": true
+        }
+      }
+    },
+    "ForgotPassword": {
+      "required": [
+        "emailId"
+      ],
+      "properties": {
+        "emailId": {
+          "type": "string",
+          "example": "bhavsarneha21@gmail.com",
+          "uniqueItems": true
+        }
+      }
+    },
+    "UpdateProfile": {
+      "required": [
+        "firstName",
+        "lastName",
+        "userName",
+        "photo"
+      ],
+      "properties": {
+        "lastName": {
+          "example": "Bhavsar",
+          "type": "string"
+        },
+        "firstName": {
+          "example": "Neha",
+          "type": "string"
+        },
+        "userName": {
+          "example": "neha_bhavsar",
+          "type": "string",
+          "uniqueItems": true
+        },
+        "photo": {
+          "example": "5cbead5921ccde05e5cca7b8",
+          "type": "string"
+        }
+      }
+    },
+    "UpdateUserProfileResponse": {
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "Number",
+              "example": 1
+            },
+            "emailId": {
+              "type": "string",
+              "example": "test1@grr.la"
+            },
+            "fullName": {
+              "type": "string",
+              "example": "test1"
+            },
+            "countryCode": {
+              "type": "string",
+              "example": "1245"
+            },
+            "mobile": {
+              "type": "string",
+              "example": "987-456-9962"
+            },
+            "address": {
+              "type": "string",
+              "example": "ahmedabad"
+            },
+            "photo": {
+              "type": "string",
+              "example": "public/upload/images/1613542107055.jpg"
+            },
+            "role": {
+              "type": "string",
+              "example": "user"
+            }
+          }
+        },
+        "extra_meta": {
+          "type": "object",
+          "properties": {}
+        }
+      }
+    },
+    "ChangePassword": {
+      "required": [
+        "oldPassword",
+        "newPassword"
+      ],
+      "properties": {
+        "oldPassword": {
+          "type": "string",
+          "example": "Test1234",
+          "uniqueItems": true
+        },
+        "newPassword": {
+          "type": "string",
+          "example": "Test123",
+          "uniqueItems": true
+        }
+      }
+    },
+    "Uploadfile": {
+      "properties": {
+        "file": {
+          "type": "file"
+        }
+      }
+    },
+    "socialAccess": {
+      "required": [
+        "socialId",
+        "socialKey"
+      ],
+      "properties": {
+        "socialId": {
+          "type": "string",
+          "example": "123456789",
+          "uniqueItems": true
+        },
+        "socialKey": {
+          "type": "string",
+          "example": "fbId/googleId/appleId'",
+          "uniqueItems": true
+        },
+        "emailId": {
+          "type": "string",
+          "example": "bhavsarneha21@gmail.com",
+          "uniqueItems": true
+        },
+        "mobile": {
+          "type": "string",
+          "example": "000-000-0000",
+          "uniqueItems": true
+        },
+        "countryCode": {
+          "type": "string",
+          "example": "+91",
+          "uniqueItems": true
+        },
+        "fullName": {
+          "example": "John Deo",
+          "type": "string"
+        },
+        "deviceToken": {
+          "type": "string",
+          "example": "epAQ4lgVJsg:APA91bFg6v8rN_hGdHV2_iqB4denPSuyJMnswpyFrPzmETH6ig2qPizowAQ17I81y6dHzZr3k1LtO5YjSkldi4-LxLxl8BW0vMM6Ww7UUWZod5nWrdNR6seS3t9ztN_KSMNIrYegblKe"
+        },
+        "device": {
+          "type": "string",
+          "example": "android"
+        }
+      }
+    }
+  }
+}

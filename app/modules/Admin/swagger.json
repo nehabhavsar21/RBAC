@@ -1,0 +1,596 @@
+{
+    "paths": {
+        "/admin/login": {
+            "post": {
+                "tags": [
+                    "Admin"
+                ],
+                "description": "Login",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Login",
+                        "schema": {
+                            "$ref": "#/definitions/AdminLogin"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Login.",
+                        "schema": {
+                            "$ref": "#/definitions/AdminLogin"
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/forgotPassword": {
+            "post": {
+                "tags": [
+                    "Admin"
+                ],
+                "description": "Send forgot password mail",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "body",
+                        "description": "Send forgot password mail",
+                        "schema": {
+                            "$ref": "#/definitions/ForgotPasswordAdmin"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Mail sent successfully",
+                        "schema": {
+                            "$ref": "#/definitions/ForgotPasswordAdmin"
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/resetPassword": {
+            "post": {
+                "tags": [
+                    "Admin"
+                ],
+                "description": "Reset password",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "body",
+                        "description": "Reset password",
+                        "schema": {
+                            "$ref": "#/definitions/ResetPasswordAdmin"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Password updated successfully",
+                        "schema": {
+                            "$ref": "#/definitions/ResetPasswordAdmin"
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/setPassword": {
+            "post": {
+                "tags": [
+                    "Admin"
+                ],
+                "description": "Set password",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "body",
+                        "description": "Set password",
+                        "schema": {
+                            "$ref": "#/definitions/ResetPasswordAdmin"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Password added successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/ResetPasswordAdmin"
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/changePassword": {
+            "post": {
+                "tags": [
+                    "Admin"
+                ],
+                "description": "Change password",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Change password",
+                        "schema": {
+                            "$ref": "#/definitions/AdminChangePassword"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Password changed successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/AdminChangePassword"
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/editProfile": {
+            "post": {
+                "tags": [
+                    "Admin"
+                ],
+                "description": "Update User Profile",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "body",
+                        "description": "Update User Profile",
+                        "schema": {
+                            "$ref": "#/definitions/AdminUpdateProfile"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User details update successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/AdminUpdateProfile"
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/profile": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "description": "Get User Profile",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get User Profile."
+                    }
+                }
+            }
+        },
+        "/admin/getAllEndpoints": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "description": "Get All Endpoints",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get All Endpoints."
+                    }
+                }
+            }
+        },
+        "/admin/logout": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "description": "Logout admin",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Logout admin."
+                    }
+                }
+            }
+        },
+        "/admin/fileUpload": {
+            "post": {
+                "tags": [
+                    "Admin"
+                ],
+                "description": "Upload file",
+                "parameters": [
+                    {
+                        "name": "photo",
+                        "required": true,
+                        "in": "formData",
+                        "type": "file",
+                        "description": "Upload file"
+                    },
+                    {
+                        "name": "Authorization",
+                        "required": true,
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "multipart/form-data"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "File uploaded",
+                        "schema": {
+                            "$ref": "#/definitions/AdminUploadfile"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "AdminLogin": {
+            "required": [
+                "authName",
+                "password"
+            ],
+            "properties": {
+                "authName": {
+                    "type": "string",
+                    "example": "seed_admin@grr.la || +91-0000000000",
+                    "uniqueItems": true,
+                    "required": true
+                },
+                "password": {
+                    "type": "string",
+                    "example": "Test1234",
+                    "uniqueItems": true,
+                    "required": true
+                }
+            }
+        },
+        "Registers": {
+            "required": [
+                "firstname",
+                "lastname",
+                "emailId",
+                "password"
+            ],
+            "properties": {
+                "firstname": {
+                    "type": "string",
+                    "example": "Test",
+                    "required": true
+                },
+                "lastname": {
+                    "type": "string",
+                    "example": "Test1",
+                    "required": true
+                },
+                "emailId": {
+                    "type": "string",
+                    "example": "test@grr.la",
+                    "uniqueItems": true,
+                    "required": true
+                },
+                "password": {
+                    "type": "string",
+                    "example": "Test@123",
+                    "required": true
+                },
+                "mobile": {
+                    "type": "string",
+                    "example": "+91-0000000000",
+                    "uniqueItems": true,
+                    "required": false
+                }
+            }
+        },
+        "sendEmailVerificationLink": {
+            "required": [
+                "emailId"
+            ],
+            "properties": {
+                "emailId": {
+                    "type": "string",
+                    "example": "seed_admin@grr.la",
+                    "required": true
+                }
+            }
+        },
+        "RegisterRes": {
+            "properties": {
+                "status": {
+                    "type": "number",
+                    "example": 1
+                },
+                "message": {
+                    "type": "string",
+                    "example": "Added Successfully."
+                },
+                "otp": {
+                    "type": "string",
+                    "example": "989222"
+                },
+                "data": {
+                    "type": "object",
+                    "example": {
+                        "emailVerificationStatus": true,
+                        "isDeleted": false,
+                        "status": true,
+                        "otpVerificationStatus": true,
+                        "superAdminVerificationStatus": true,
+                        "_id": "5fa8e690b1f882185da26a8a",
+                        "firstname": "Test",
+                        "lastname": "Test1",
+                        "emailId": "test@grr.la",
+                        "mobile": "",
+                        "username": "Test Test1",
+                        "role": {
+                            "permissions": [],
+                            "status": true,
+                            "isDeleted": false,
+                            "_id": "5fa8c909aa88377e486f81ac",
+                            "role": "Vendor",
+                            "createdAt": "2020-11-09T06:49:52.328Z",
+                            "updatedAt": "2020-11-09T06:49:52.328Z"
+                        },
+                        "createdAt": "2020-11-09T06:49:52.328Z",
+                        "updatedAt": "2020-11-09T06:49:52.328Z",
+                        "__v": 0
+                    }
+                }
+            }
+        },
+        "socialAccesss": {
+            "required": [
+                "socialId",
+                "socialKey"
+            ],
+            "properties": {
+                "socialId": {
+                    "type": "string",
+                    "example": "123456789",
+                    "uniqueItems": true
+                },
+                "socialKey": {
+                    "type": "string",
+                    "example": "fbId or googleId or twitterId or InstagramId",
+                    "uniqueItems": true
+                },
+                "emailId": {
+                    "type": "string",
+                    "example": "lakshmi@grr.la",
+                    "uniqueItems": true
+                },
+                "mobile": {
+                    "type": "string",
+                    "example": "+91-000000000",
+                    "uniqueItems": true
+                },
+                "lastname": {
+                    "example": "Test",
+                    "type": "string"
+                },
+                "firstname": {
+                    "example": "Test",
+                    "type": "string"
+                },
+                "username": {
+                    "example": "test_test",
+                    "type": "string",
+                    "uniqueItems": true
+                },
+                "deviceToken": {
+                    "type": "string",
+                    "example": "epAQ4lgVJsg:APA91bFg6v8rN_hGdHV2_iqB4denPSuyJMnswpyFrPzmETH6ig2qPizowAQ17I81y6dHzZr3k1LtO5YjSkldi4-LxLxl8BW0vMM6Ww7UUWZod5nWrdNR6seS3t9ztN_KSMNIrYegblKe"
+                },
+                "device": {
+                    "type": "string",
+                    "example": "android"
+                }
+            }
+        },
+        "ResetPasswordAdmin": {
+            "required": [
+                "password",
+                "token"
+            ],
+            "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "email@example.com",
+                  "uniqueItems": true
+                },
+                "password": {
+                  "type": "string",
+                  "example": "Test123",
+                  "uniqueItems": true
+                },
+                "token": {
+                  "type": "string",
+                  "example": "wh6TyY",
+                  "uniqueItems": true
+                }
+            }
+        },
+        "ForgotPasswordAdmin": {
+            "required": [
+                "emailId"
+            ],
+            "properties": {
+                "emailId": {
+                    "type": "string",
+                    "example": "seed_admin@grr.la",
+                    "uniqueItems": true
+                }
+            }
+        },
+        "AdminUpdateProfile": {
+            "required": [
+                "firstname",
+                "lastname",
+                "mobile",
+                "photo"
+            ],
+            "properties": {
+                "lastname": {
+                    "example": "Admin",
+                    "type": "string"
+                },
+                "firstname": {
+                    "example": "Admin",
+                    "type": "string"
+                },
+                "mobile": {
+                    "example": "+91-0000000000",
+                    "type": "string",
+                    "uniqueItems": true
+                },
+                "photo": {
+                    "example": "image_1568120233570.png",
+                    "type": "string"
+                },
+                "dob": {
+                    "example": "28 January 1998",
+                    "type": "string"
+                },
+                "website": {
+                    "example": "https://rowboat.com/insititious/Angelo",
+                    "type": "string"
+                },
+                "gender": {
+                    "example": "Female || Male",
+                    "type": "string"
+                },
+                "address": {
+                    "example": "868 Colin Heights Ivyville 2182",
+                    "type": "string"
+                },
+                "country": {
+                    "example": "India",
+                    "type": "string"
+                },
+                "fbLink": {
+                    "example": "https://www.facebook.com/adoptionism664",
+                    "type": "string"
+                },
+                "twitterLink": {
+                    "example": "https://twitter.com/adoptionism744",
+                    "type": "string"
+                },
+                "instagramLink": {
+                    "example": "https://www.instagram.com/adopt-ionism744/",
+                    "type": "string"
+                },
+                "gitHubLink": {
+                    "example": "https://github.com/madop818",
+                    "type": "string"
+                },
+                "slack": {
+                    "example": "@adoptionism744",
+                    "type": "string"
+                },
+                "codePen": {
+                    "example": "https://codepen.io/adoptism243",
+                    "type": "string"
+                }
+            }
+        },
+        "AdminChangePassword": {
+            "required": [
+                "oldPassword",
+                "newPassword"
+            ],
+            "properties": {
+                "oldPassword": {
+                    "type": "string",
+                    "example": "Test123",
+                    "uniqueItems": true
+                },
+                "newPassword": {
+                    "type": "string",
+                    "example": "123456",
+                    "uniqueItems": true
+                }
+            }
+        },
+        "AdminUploadfile": {
+            "properties": {
+                "file": {
+                    "type": "file"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "permissionCatrgory": {
+        "__v": 0,
+        "createdAt": 0,
+        "updatedAt": 0
+    },
+    "permission": {
+        "__v": 0,
+        "createdAt": 0,
+        "updatedAt": 0
+    },
+    "roleList": {
+        "__v": 0,
+        "createdAt": 0,
+        "updatedAt": 0,
+        "permissions": 0,
+        "isDeleted": 0
+    },
+    "permissionAggregate": {
+        "_id.__v": 0,
+        "_id.createdAt": 0,
+        "_id.updatedAt": 0,
+        "_id.status": 0
+    }
+}
